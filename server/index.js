@@ -13,11 +13,31 @@ app.use(cors());
 const CONNECTION_URL = 'mongodb+srv://erivera7240:123@cluster0.4scrv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true} )
+// mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true} )
+//     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT} `)))
+//     .catch( (error) => console.log( error.message) )
 
-app.listen(PORT, () => {
-    console.log(`now listening on ${PORT}`)
-})
+async function initMongo() {
+    try {
+        await mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
+        return [mongoose, null]
+    } catch (e) {
+        return [null, e]
+    }
+}
+
+async function initServer() {
+    let [data, error] = await initMongo()
+    if (data) {
+        app.listen(PORT)
+        console.log(`server running`)
+    } else if (error) {
+        console.error(`omg there was an error`)
+    }
+}
+
+initServer()
+
 
 // MangoDB atlas, database  https://www.mongodb.com/cloud/atlas
 
