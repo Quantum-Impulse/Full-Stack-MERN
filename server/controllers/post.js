@@ -1,10 +1,10 @@
-import e from "express";
+import { response } from "express";
 import PostMessage from "../models/postMessage.js";
 
 // postMessage.find() is async action so we use await and async 
 export const getPosts = async (req, res) => {
     try {
-        const postMessages = await postMessage.find();
+        const postMessages = await PostMessage.find();
 
         res.status(200).json(postMessages);
     } catch (error) {
@@ -12,6 +12,16 @@ export const getPosts = async (req, res) => {
     }
 }
 
-export const createPost = (req, res) => {
-    res.send('Post Creation');
+export const createPost = async (req, res) => {
+    const body  = req.body;
+
+    const newPost = new PostMessage(post) ;
+
+    try {
+        await newPost.save();
+        
+        res.status(201).json(newPost);
+    } catch (error) {
+        res.status(409).json({message: error.message});
+    }
 }
