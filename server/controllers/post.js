@@ -1,5 +1,9 @@
-import { response } from "express";
+import express from "express";
+import mongoose from 'mongoose';
+
 import PostMessage from "../models/postMessage.js";
+
+const router = express.Router();
 
 // postMessage.find() is async action so we use await and async 
 export const getPosts = async (req, res) => {
@@ -13,7 +17,7 @@ export const getPosts = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const body  = req.body;
+    const post  = req.body;
 
     const newPost = new PostMessage(post) ;
 
