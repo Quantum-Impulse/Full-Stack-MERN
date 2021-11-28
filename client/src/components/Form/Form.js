@@ -6,7 +6,7 @@ import useStyles from './styles';
 const Form = () => {
     const [postData, setPostData] = useState( {creator: '', title: '', message: '', tags: '', selectedFile: ''});
     const classes = useStyles();
-    
+
     const handleSubmit = () => {
 
     }
@@ -15,13 +15,7 @@ const Form = () => {
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={classes.name} onSubmit={handleSubmit} >
             <Typography variant="h6">Creating a Memory</Typography>
-            <TextField 
-                name="creator"
-                variant="outlined" 
-                label="Creator" 
-                fullWidth
-                value={postData.creator}
-                onChange={}
+            <TextField name="creator"variant="outlined" label="Creator" fullWidthvalue={postData.creator}onChange={(e) => setPostData( { ... postData, creator: e.target.value })}
              />
             </form>
         </Paper>
