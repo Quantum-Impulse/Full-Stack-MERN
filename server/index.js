@@ -13,6 +13,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes)
 
+// Adding the link like this is not the best since it's not secure
 const CONNECTION_URL = 'mongodb+srv://erivera7240:123@cluster0.4scrv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' ;
 const PORT = process.env.PORT || 5000;
 
