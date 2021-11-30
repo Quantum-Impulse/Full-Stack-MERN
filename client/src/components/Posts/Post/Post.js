@@ -11,7 +11,7 @@ const Post = ( { post }) => {
     const classes = useStyles();
    
     return (
-        <Card classname={classes.card}>
+        <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
             
             <div className={classes.overlay}>
@@ -21,7 +21,7 @@ const Post = ( { post }) => {
             
             <div className={classes.overlay2} >
                 <Button style={{color: 'white'}} size="small" onClick={ () => {} }>
-                    <MoreHorizIcon fontSize="default" />
+                    <MoreHorizIcon fontSize="medium" />
                 </Button>
             </div>
             
