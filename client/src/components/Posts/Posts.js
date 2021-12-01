@@ -9,7 +9,7 @@ const Posts = ({ setCurrentId }) => {
     const posts = useSelector( (state) => state.posts);
     const classes = useStyles();
 
-    console.log(posts)
+    console.log(posts);
     return (
         !posts.length ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
@@ -23,7 +23,7 @@ const Posts = ({ setCurrentId }) => {
     )
 }
 
-export default Posts
+export default Posts;
 
 /* 
  prop drilling - basically sending the same prop to 
