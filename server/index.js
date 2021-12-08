@@ -15,7 +15,13 @@ app.use(cors());
 
 app.use('/posts', postRoutes)
 
+app.get('/', (req, res) => {
+    res.send('hellow to memories api')
+})
+
 // Adding the link like this is not the best since it's not secure
+// when deploying to heroku, we removed the port forom 
+// the env file because heroku will populate it late
 const PORT = process.env.PORT || 5000;
 
 // async function initMongo() {
